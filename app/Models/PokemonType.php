@@ -11,4 +11,5 @@ class PokemonType extends Model
 
     protected $table = 'pokemon_type';
     protected $primaryKey = 'id';
+    protected $fillable = ["type_id", "pokemon_id"];
 }

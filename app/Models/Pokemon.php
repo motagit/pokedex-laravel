@@ -11,7 +11,7 @@ class Pokemon extends Model
 
     protected $table = 'pokemon';
     protected $primaryKey = 'id';
-    protected $fillable = ['name', 'urlImage'];
+    protected $fillable = ['name', 'imageUrl'];
 
     public function types()
     {
