@@ -16,13 +16,13 @@ class CreatePokemonsTable extends Migration
         Schema::create('type', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->timestamps();
         });
 
         Schema::create('pokemon', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->text('imageUrl');
+            $table->string('description');
             $table->timestamps();
         });
 

@@ -24,11 +24,16 @@
                                 </div>
 
                                 <div class="form-field">
+                                    <label class="text-gray-600 dark:text-gray-400 text-sm" for="description">Description:</label><br/>
+                                    <textarea rows="5" cols="30" type="text" name="description"></textarea>
+                                </div>
+
+                                <div class="form-field">
                                     <input type="file" name="imageUrl" class="form-control">
                                 </div>
 
                                 <div class="form-field">
-                                    <label class="text-gray-600 dark:text-gray-400 text-sm" for="name">Type:</label>
+                                    <label class="text-gray-600 dark:text-gray-400 text-sm" for="type">Type:</label>
                                     <select name="type" id="types">
                                         @foreach ($types as $type)
                                             <option value="{{$type->id}}">{{$type->name}}</option>
