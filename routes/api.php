@@ -18,6 +18,3 @@ use App\Http\Controllers\PokemonsController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-
-Route::get('/pokemons', [PokemonsController::class, 'index']);
-Route::post('/pokemons', [PokemonsController::class, 'store']);

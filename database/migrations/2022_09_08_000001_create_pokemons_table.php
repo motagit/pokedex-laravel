@@ -22,7 +22,7 @@ class CreatePokemonsTable extends Migration
         Schema::create('pokemon', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('imageUrl');
+            $table->text('imageUrl');
             $table->timestamps();
         });
 

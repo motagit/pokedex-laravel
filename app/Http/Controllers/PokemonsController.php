@@ -10,25 +10,33 @@ class PokemonsController extends Controller
 {
     public function index() {
         $pokemons = Pokemon::with('types')->get();
-        return $pokemons;
+        return view('pokemons', ['pokemons' => $pokemons]);
     }
 
-    public function store(Request $request) {
+    public function postPokemon(Request $request) {
+        $image = base64_encode(file_get_contents($request->file('imageUrl')));
 
         $pokemon = Pokemon::create([
             "name"=>$request->input("name"),
-            "imageUrl"=>$request->input("imageUrl")
+            "imageUrl"=>$image
         ]);
-        $types = $request->input("types");
+        // $types = $request->input("types");
 
-        foreach ($types as $value) {
-            PokemonType::create([
-                "type_id"=>$value["id"],
-                "pokemon_id"=>$pokemon->id
-            ]);
-        }
+        // foreach ($types as $value) {
+        //     PokemonType::create([
+        //         "type_id"=>$value["id"],
+        //         "pokemon_id"=>$pokemon->id
+        //     ]);
+        // }
 
-        return $pokemon;
+        $typeId = $request->input("type");
+
+        PokemonType::create([
+            "type_id"=>$typeId,
+            "pokemon_id"=>$pokemon->id
+        ]);
+
+        return redirect('/');
 
     }
 }

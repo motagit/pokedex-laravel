@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\PokemonsController;
+use App\Models\Type;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +16,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', [PokemonsController::class, 'index']);
+Route::post('/pokemon', [PokemonsController::class, 'postPokemon']);
+Route::any('/insertPokemon', function() {
+    $types = DB::table('type')->get();
+    return view('insertPokemon', ['types' => $types]);
 });
