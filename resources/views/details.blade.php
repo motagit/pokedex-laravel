@@ -7,6 +7,12 @@
 
         <div class="flex justify-center pt-8 sm:justify-start sm:pt-0 bg-white dark:bg-gray-800 shadow sm:rounded-lg" style="padding: 10px 0">
             <a href="{{ url('/') }}" class="btn dark:bg-gray-900 dark:text-white sm:rounded-lg" style="margin-left: 10px;">Go Back</a>
+            {{-- <a href="{{ url('/') }}" class="btn dark:bg-gray-900 dark:text-white sm:rounded-lg" style="margin-left: 10px;">Delete</a> --}}
+            <form action="/pokemon/{{ $pokemon->id }}" method="POST" style="margin-bottom: 0; margin-left: 10px">
+                @csrf
+                @method('DELETE')
+                <button class="btn bg-red-900 dark:text-white sm:rounded-lg" style="font-size: 16px">Delete</button>
+            </form>
         </div>
 
         <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">

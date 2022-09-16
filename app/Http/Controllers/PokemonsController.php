@@ -15,19 +15,13 @@ class PokemonsController extends Controller
         return view('pokemons', ['pokemons' => $pokemons]);
     }
 
-    public function getPokemon($id)
+    public function show($id)
     {
-        $pokemon = Pokemon::find($id);
+        $pokemon = Pokemon::findOrFail($id);
         return view('details', ['pokemon' => $pokemon]);
     }
 
-    public function insertPokemonPage()
-    {
-        $types = DB::table('type')->get();
-        return view('insert', ['types' => $types]);
-    }
-
-    public function postPokemon(Request $request)
+    public function store(Request $request)
     {
         $image = base64_encode(file_get_contents($request->file('imageUrl')));
 
@@ -53,6 +47,27 @@ class PokemonsController extends Controller
         ]);
 
         return redirect('/');
+    }
 
+    public function insertPokemon()
+    {
+        $types = DB::table('type')->get();
+        return view('insert', ['types' => $types]);
+    }
+
+    public function destroy($id)
+    {
+        $pokemon = Pokemon::findOrFail($id);
+        $pokemonTypes = DB::table('pokemon_type')->where('pokemon_id', '=', $id)->get();
+
+        foreach ($pokemonTypes as $pokemonType) {
+            $pokemonTypeRow = PokemonType::findOrFail($pokemonType->id);
+            $pokemonTypeRow->delete();
+        }
+        \Log::info($pokemonTypes);
+
+        $pokemon->delete();
+
+        return redirect('/');
     }
 }
