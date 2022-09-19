@@ -8,8 +8,8 @@
             <h1 class="text-gray-400">Insert a new Pokemon</h1>
         </div>
 
-        <div class="flex justify-center pt-8 sm:justify-start sm:pt-0 bg-white dark:bg-gray-800 shadow sm:rounded-lg" style="padding: 10px 0">
-            <a href="{{ url('/') }}" class="btn dark:bg-gray-900 dark:text-white sm:rounded-lg" style="margin-left: 10px; display: flex; align-items: center; gap: 10px">
+        <div class="flex justify-center pt-8 sm:justify-start sm:pt-0 dark:bg-gray-800 shadow sm:rounded-lg" style="padding: 10px 0">
+            <a href="{{ url('/') }}" class="default-button dark:bg-gray-900 dark:text-white sm:rounded-lg" style="margin-left: 10px; display: flex; align-items: center; gap: 10px">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
                 </svg>
@@ -17,7 +17,68 @@
             </a>
         </div>
 
-        <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
+        <div class="container mt-8 dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
+            <div class="row">
+                <div class="grid grid-cols-1 p-4">
+                    <form action="/pokemon" method="POST" enctype="multipart/form-data">
+                        @csrf
+
+                        <div class="row mb-3 mt-4">
+                            <label for="name" class="col-md-3 col-form-label text-md-end text-white">{{ __('Name') }}</label>
+
+                            <div class="col-md-9">
+                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autofocus>
+
+                                @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="email" class="col-md-3 col-form-label text-md-end text-white">{{ __('Description') }}</label>
+
+                            <div class="col-md-9">
+                                <textarea rows="3" id="description" class="form-control" name="description" required>
+                                </textarea>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="imageUrl" class="col-md-3 col-form-label text-md-end text-white">{{ __('Image') }}</label>
+
+                            <div class="col-md-9">
+                                <input type="file" name="imageUrl" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="type" class="col-md-3 col-form-label text-md-end text-white">{{ __('Type') }}</label>
+
+                            <div class="col-md-9">
+                                <select name="type" id="types" class="form-select" required>
+                                    @foreach ($types as $type)
+                                        <option value="{{$type->id}}">{{$type->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row mb-0">
+                            <div class="col-md-12 offset-md-3">
+                                <button type="submit" class="default-button dark:bg-gray-900 dark:text-white sm:rounded-lg" style="font-size: 14px">
+                                    {{ __('Submit') }}
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        {{-- <div class="mt-8 dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
             <div class="grid grid-cols-1 md:grid-cols-2">
                     <div class="p-6">
                         <div class="flex items-center">
@@ -46,7 +107,7 @@
                                     </select>
                                 </div>
 
-                                <input class="btn dark:bg-gray-900 dark:text-white sm:rounded-lg mt-8" type="submit" value="Submit">
+                                <input class="default-button dark:bg-gray-900 dark:text-white sm:rounded-lg mt-8" type="submit" value="Submit">
                             </form>
                         </div>
 
@@ -56,6 +117,6 @@
                         </div>
                     </div>
             </div>
-        </div>
+        </div> --}}
     </div>
 </div>
