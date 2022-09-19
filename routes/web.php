@@ -20,3 +20,7 @@ Route::delete('/pokemon/{id}', [PokemonsController::class, 'destroy']);
 Route::get('/pokemon/{id}', [PokemonsController::class, 'show']);
 Route::any('/insertPokemon', [PokemonsController::class, 'insertPokemon']);
 
+
+Auth::routes();
+
+Route::get('/home', [PokemonsController::class, 'index'])->name('home');
