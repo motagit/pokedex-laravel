@@ -24,3 +24,6 @@ Route::any('/insertPokemon', [PokemonsController::class, 'insertPokemon'])->midd
 Auth::routes();
 
 Route::get('/home', [PokemonsController::class, 'index'])->name('home');
+
+Route::get('/permissions', [PokemonsController::class, 'index'])->name('permissions');
+Route::get('/managePokemons', [PokemonsController::class, 'index'])->name('managePokemons');
