@@ -15,10 +15,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [PokemonsController::class, 'index']);
-Route::post('/pokemon', [PokemonsController::class, 'store']);
-Route::delete('/pokemon/{id}', [PokemonsController::class, 'destroy']);
+Route::post('/pokemon', [PokemonsController::class, 'store'])->middleware('auth');;
+Route::delete('/pokemon/{id}', [PokemonsController::class, 'destroy'])->middleware('auth');;
 Route::get('/pokemon/{id}', [PokemonsController::class, 'show']);
-Route::any('/insertPokemon', [PokemonsController::class, 'insertPokemon']);
+Route::any('/insertPokemon', [PokemonsController::class, 'insertPokemon'])->middleware('auth');
 
 
 Auth::routes();
