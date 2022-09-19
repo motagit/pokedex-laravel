@@ -49,6 +49,10 @@ class CreatePokemonsTable extends Migration
      */
     public function down()
     {
+        Schema::table('pokemon_type', function (Blueprint $table) {
+            $table->dropForeign(['pokemon_id']);
+            $table->dropForeign(['type_id']);
+        });
         Schema::dropIfExists('type');
         Schema::dropIfExists('pokemon');
         Schema::dropIfExists('pokemon_type');

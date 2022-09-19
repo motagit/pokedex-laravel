@@ -11,7 +11,12 @@ class Pokemon extends Model
 
     protected $table = 'pokemon';
     protected $primaryKey = 'id';
-    protected $fillable = ['name', 'imageUrl', 'description'];
+    protected $fillable = ['name', 'imageUrl', 'description', 'created_by'];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
     public function types()
     {

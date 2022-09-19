@@ -5,13 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\Pokemon;
 use App\Models\PokemonType;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class PokemonsController extends Controller
 {
     public function index()
     {
-        $pokemons = Pokemon::with('types')->get();
+        $pokemons = Pokemon::where('approved', '=', true)->get();
         return view('pokemons', ['pokemons' => $pokemons]);
     }
 
@@ -25,10 +26,13 @@ class PokemonsController extends Controller
     {
         $image = base64_encode(file_get_contents($request->file('imageUrl')));
 
+        $userId = Auth::user()->id;
+
         $pokemon = Pokemon::create([
             "name"=>$request->input("name"),
             "description"=>$request->input("description"),
-            "imageUrl"=>$image
+            "imageUrl"=>$image,
+            "created_by"=>$userId
         ]);
         // $types = $request->input("types");
 
