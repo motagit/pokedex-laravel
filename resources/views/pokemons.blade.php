@@ -23,7 +23,7 @@
                 <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
                     @if (Auth::user()->is_admin === true)
                         <li>
-                            <a href="{{ route('managePokemons') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="dropdown-item" style="display: flex; align-items: center; gap: 10px">
+                            <a href="{{ route('managePokemons') }}" class="dropdown-item" style="display: flex; align-items: center; gap: 10px">
                                 <i class="bi bi-gear"></i>
                                 <span>Manage Pokemons</span>
                             </a>

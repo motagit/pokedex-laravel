@@ -68,10 +68,32 @@ class PokemonsController extends Controller
             $pokemonTypeRow = PokemonType::findOrFail($pokemonType->id);
             $pokemonTypeRow->delete();
         }
-        \Log::info($pokemonTypes);
 
         $pokemon->delete();
+        $previousUrl = str_replace(url('/'), '', url()->previous());
 
-        return redirect('/');
+        if ($previousUrl == '/managePokemons'){
+            return redirect('/managePokemons');
+        } else {
+            return redirect('/');
+        }
+    }
+
+    public function approvePokemonsList()
+    {
+        $pokemons = Pokemon::where('approved', '=', false)->get();
+        return view('approvePokemons', ['pokemons' => $pokemons]);
+    }
+
+    public function approvePokemon($id)
+    {
+        $pokemon = Pokemon::findOrFail($id);
+
+        if ($pokemon) {
+            $pokemon->approved = true;
+            $pokemon->save();
+        }
+
+        return $this->approvePokemonsList();
     }
 }

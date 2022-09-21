@@ -14,5 +14,6 @@
         @yield('login')
         @yield('insertPokemon')
         @yield('details')
+        @yield('approvePokemons')
     </body>
 </html>

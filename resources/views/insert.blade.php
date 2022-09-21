@@ -78,46 +78,5 @@
                 </div>
             </div>
         </div>
-
-        {{-- <div class="mt-8 dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
-            <div class="grid grid-cols-1 md:grid-cols-2">
-                    <div class="p-6">
-                        <div class="flex items-center">
-                            <form action="/pokemon" method="POST" enctype="multipart/form-data">
-                                @csrf
-                                <div class="form-field">
-                                    <label class="text-gray-600 dark:text-gray-400 text-sm" for="name">Name:</label>
-                                    <input type="text" name="name">
-                                </div>
-
-                                <div class="form-field">
-                                    <label class="text-gray-600 dark:text-gray-400 text-sm" for="description">Description:</label><br/>
-                                    <textarea rows="5" cols="30" type="text" name="description"></textarea>
-                                </div>
-
-                                <div class="form-field">
-                                    <input type="file" name="imageUrl" class="form-control">
-                                </div>
-
-                                <div class="form-field">
-                                    <label class="text-gray-600 dark:text-gray-400 text-sm" for="type">Type:</label>
-                                    <select name="type" id="types">
-                                        @foreach ($types as $type)
-                                            <option value="{{$type->id}}">{{$type->name}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-
-                                <input class="default-button dark:bg-gray-900 dark:text-white sm:rounded-lg mt-8" type="submit" value="Submit">
-                            </form>
-                        </div>
-
-                        <div class="ml-12">
-                            <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                            </div>
-                        </div>
-                    </div>
-            </div>
-        </div> --}}
     </div>
 </div>

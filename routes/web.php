@@ -18,12 +18,14 @@ Route::get('/', [PokemonsController::class, 'index']);
 Route::post('/pokemon', [PokemonsController::class, 'store'])->middleware('auth');;
 Route::delete('/pokemon/{id}', [PokemonsController::class, 'destroy'])->middleware('auth');;
 Route::get('/pokemon/{id}', [PokemonsController::class, 'show']);
-Route::any('/insertPokemon', [PokemonsController::class, 'insertPokemon'])->middleware('auth');
+Route::get('/insertPokemon', [PokemonsController::class, 'insertPokemon'])->middleware('auth');
+Route::put('/approvePokemon/{id}', [PokemonsController::class, 'approvePokemon'])->name('approvePokemon')->middleware('auth');
+Route::put('/reprovePokemon/{id}', [PokemonsController::class, 'reprovePokemon'])->middleware('auth');
 
+Route::get('/home', [PokemonsController::class, 'index'])->name('home');
+Route::get('/permissions', [PokemonsController::class, 'index'])->name('permissions');
+Route::get('/managePokemons', [PokemonsController::class, 'approvePokemonsList'])->name('managePokemons');
 
 Auth::routes();
 
-Route::get('/home', [PokemonsController::class, 'index'])->name('home');
 
-Route::get('/permissions', [PokemonsController::class, 'index'])->name('permissions');
-Route::get('/managePokemons', [PokemonsController::class, 'index'])->name('managePokemons');
