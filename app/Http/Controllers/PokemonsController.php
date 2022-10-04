@@ -81,7 +81,8 @@ class PokemonsController extends Controller
 
     public function approvePokemonsList()
     {
-        $pokemons = Pokemon::where('approved', '=', false)->get();
+        $pokemons = Pokemon::with('user')->where('approved', '=', false)->get();
+
         return view('approvePokemons', ['pokemons' => $pokemons]);
     }
 

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PokemonsController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,8 +24,8 @@ Route::put('/approvePokemon/{id}', [PokemonsController::class, 'approvePokemon']
 Route::put('/reprovePokemon/{id}', [PokemonsController::class, 'reprovePokemon'])->middleware('auth');
 
 Route::get('/home', [PokemonsController::class, 'index'])->name('home');
-Route::get('/permissions', [PokemonsController::class, 'index'])->name('permissions');
 Route::get('/managePokemons', [PokemonsController::class, 'approvePokemonsList'])->name('managePokemons');
+Route::get('/permissions', [UserController::class, 'index'])->name('permissions');
 
 Auth::routes();
 

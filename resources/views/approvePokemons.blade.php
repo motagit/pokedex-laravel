@@ -35,6 +35,7 @@
                                         <th scope="col">Image</th>
                                         <th scope="col">Name</th>
                                         <th scope="col">Type</th>
+                                        <th scope="col">Created By</th>
                                         <th scope="col"></th>
                                     </tr>
                                 </thead>
@@ -52,9 +53,10 @@
                                                     @endforeach
                                                 </span>
                                             </td>
+                                            <td>{{ $pokemon->user->email }}</td>
                                             <td>
                                                 <div class="row">
-                                                    <form class="col-md-3" action="/approvePokemon/{{ $pokemon->id }}" method="POST" enctype="multipart/form-data">
+                                                    <form class="col-md-4" action="/approvePokemon/{{ $pokemon->id }}" method="POST" enctype="multipart/form-data">
                                                         @csrf
                                                         @method('PUT')
                                                         <button type="submit" class="mr-2 btn btn-success dark:text-white sm:rounded-lg"

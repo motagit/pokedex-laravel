@@ -30,7 +30,7 @@
                         </li>
 
                         <li>
-                            <a href="{{ route('permissions') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="dropdown-item" style="display: flex; align-items: center; gap: 10px">
+                            <a href="{{ route('permissions') }}" class="dropdown-item" style="display: flex; align-items: center; gap: 10px">
                                 <i class="bi bi-person-check"></i>
                                 <span>Permissions</span>
                             </a>
