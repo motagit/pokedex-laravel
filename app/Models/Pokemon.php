@@ -15,7 +15,7 @@ class Pokemon extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->hasOne(User::class, 'id', 'created_by');
     }
 
     public function types()

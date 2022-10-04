@@ -14,7 +14,7 @@ class AlterTablePokemonsColumnUser extends Migration
     public function up()
     {
         Schema::table('pokemon', function (Blueprint $table) {
-            $table->boolean('approved')->default('0');
+            $table->boolean('approved')->default(false);
             $table->unsignedBigInteger('created_by');
             $table->foreign('created_by')
                 ->references('id')
