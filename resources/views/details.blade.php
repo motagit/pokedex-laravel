@@ -11,7 +11,7 @@
                 <span>Go Back</span>
             </a>
 
-            @if (Auth::check())
+            @if (Auth::check() && Auth::user()->is_admin == true)
             <form action="/pokemon/{{ $pokemon->id }}" method="POST" style="margin-bottom: 0; margin-left: 10px">
                 @csrf
                 @method('DELETE')
