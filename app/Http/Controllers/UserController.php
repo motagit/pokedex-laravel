@@ -12,4 +12,16 @@ class UserController extends Controller
         $users = User::all();
         return view('permissions', ['users' => $users]);
     }
+
+    public function turnAdmin($id)
+    {
+        $user = User::findOrFail($id);
+
+        if ($user) {
+            $user->is_admin = true;
+            $user->save();
+        }
+
+        return $this->index();
+    }
 }

@@ -28,6 +28,9 @@
                                 <tr>
                                     <th scope="col">#</th>
                                     <th scope="col">Name</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Created at</th>
+                                    <th scope="col">Admin</th>
                                     <th scope="col"></th>
                                 </tr>
                             </thead>
@@ -37,19 +40,24 @@
                                     <tr>
                                         <th scope="row">{{ $user->id }}</th>
                                         <td>{{ $user->name }}</td>
+                                        <td>{{ $user->email }}</td>
+                                        <td>{{ $user->created_at }}</td>
+                                        <td>{{ $user->is_admin == 1 ? 'Yes' : 'No' }}</td>
                                         <td>
                                             <div class="row">
-                                                <form class="col-md-3" action="/approvePokemon/{{ $user->id }}" method="POST" enctype="multipart/form-data">
+                                                <form action="/turnAdmin/{{ $user->id }}" method="POST" enctype="multipart/form-data">
                                                     @csrf
                                                     @method('PUT')
-                                                    <button type="submit" class="mr-2 btn btn-success dark:text-white sm:rounded-lg"
-                                                        style="display: flex; align-items: center; gap: 10px">
-                                                        <i class="bi bi-check2"></i>
-                                                        <span>Approve</span>
-                                                    </button>
+                                                    @if ($user->is_admin == 0)
+                                                        <button type="submit" class="mr-2 btn btn-success dark:text-white sm:rounded-lg"
+                                                            style="display: flex; align-items: center; gap: 10px">
+                                                            <i class="bi bi-check2"></i>
+                                                            <span>Turn admin</span>
+                                                        </button>
+                                                    @endif
                                                 </form>
 
-                                                <form class="col-md-3 ml-2" action="/pokemon/{{ $user->id }}" method="POST" enctype="multipart/form-data">
+                                                {{-- <form class="col-md-3 ml-2" action="/pokemon/{{ $user->id }}" method="POST" enctype="multipart/form-data">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" href="{{ url('/') }}" class="btn btn-danger dark:text-white sm:rounded-lg"
@@ -57,7 +65,7 @@
                                                         <i class="bi bi-x-lg"></i>
                                                         <span>Reprove</span>
                                                     </button>
-                                                </form>
+                                                </form> --}}
                                             </div>
 
                                         </td>

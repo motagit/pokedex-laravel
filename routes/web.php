@@ -22,6 +22,7 @@ Route::get('/pokemon/{id}', [PokemonsController::class, 'show']);
 Route::get('/insertPokemon', [PokemonsController::class, 'insertPokemon'])->middleware('auth');
 Route::put('/approvePokemon/{id}', [PokemonsController::class, 'approvePokemon'])->name('approvePokemon')->middleware('auth');
 Route::put('/reprovePokemon/{id}', [PokemonsController::class, 'reprovePokemon'])->middleware('auth');
+Route::put('/turnAdmin/{id}', [UserController::class, 'turnAdmin'])->name('turnAdmin')->middleware('auth');
 
 Route::get('/home', [PokemonsController::class, 'index'])->name('home');
 Route::get('/managePokemons', [PokemonsController::class, 'approvePokemonsList'])->name('managePokemons');
