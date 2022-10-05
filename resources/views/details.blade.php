@@ -31,7 +31,7 @@
                                 <h1 class="text-gray-400 font-semibold">{{$pokemon->name}}</h1>
                                 <div class="text-gray-600 dark:text-gray-400 text-sm">
                                     @foreach ($pokemon->types as $type)
-                                        <span>{{$type->name}}</span>
+                                        <span class="text-white text-sm type-chip" style="background-color: {{ $type->color }}">{{$type->name}}</span>
                                     @endforeach
                                 </div>
                             </div>
@@ -45,3 +45,4 @@
         </div>
     </div>
 </div>
+@endsection

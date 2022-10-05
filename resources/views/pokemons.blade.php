@@ -72,21 +72,14 @@
                                 <span class="font-semibold text-gray-900 text-white">{{$pokemon->name}}</span>
                                 <br/>
                                 @foreach ($pokemon->types as $type)
-                                    <span class="text-white text-sm">{{$type->name}}</span>
+                                    <span class="text-white text-sm type-chip" style="background-color: {{ $type->color }}">{{$type->name}}</span>
                                 @endforeach
                             </div>
                         </div>
-
-                        {{-- <div class="ml-12">
-                            <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                @foreach ($pokemon->types as $type)
-                                    <span>{{$type->name}}</span>
-                                @endforeach
-                            </div>
-                        </div> --}}
                     </a>
                 @endforeach
             </div>
         </div>
     </div>
 </div>
+@endsection

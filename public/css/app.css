@@ -18695,3 +18695,9 @@ video {
   --bs-dropdown-bg: #232b38 !important;
   --bs-dropdown-link-active-bg: #232b38a4 !important;
 }
+
+.type-chip {
+  padding: 0 10px;
+  border: 1px solid #fff;
+  border-radius: 15px;
+}

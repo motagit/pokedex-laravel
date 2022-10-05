@@ -47,16 +47,19 @@
                                             <td><img class="pokemon-image" src="data:image/png;base64, {{ $pokemon->imageUrl }}" alt="{{ $pokemon->name }}"></td>
                                             <td>{{ $pokemon->name }}</td>
                                             <td>
-                                                <span class="text-white text-sm">
+                                                @foreach ($pokemon->types as $type)
+                                                    <span class="text-white text-sm type-chip" style="background-color: {{ $type->color }}">{{$type->name}}</span>
+                                                @endforeach
+                                                {{-- <span class="text-white text-sm">
                                                     @foreach ($pokemon->types as $type)
                                                         {{ $type->name }}
                                                     @endforeach
-                                                </span>
+                                                </span> --}}
                                             </td>
                                             <td>{{ $pokemon->user->email }}</td>
                                             <td>
                                                 <div class="row">
-                                                    <form class="col-md-4" action="/approvePokemon/{{ $pokemon->id }}" method="POST" enctype="multipart/form-data">
+                                                    <form class="col-md-5" action="/approvePokemon/{{ $pokemon->id }}" method="POST" enctype="multipart/form-data">
                                                         @csrf
                                                         @method('PUT')
                                                         <button type="submit" class="mr-2 btn btn-success dark:text-white sm:rounded-lg"
@@ -89,3 +92,4 @@
             </div>
         </div>
     </div>
+@endsection

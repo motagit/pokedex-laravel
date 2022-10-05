@@ -56,16 +56,6 @@
                                                         </button>
                                                     @endif
                                                 </form>
-
-                                                {{-- <form class="col-md-3 ml-2" action="/pokemon/{{ $user->id }}" method="POST" enctype="multipart/form-data">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" href="{{ url('/') }}" class="btn btn-danger dark:text-white sm:rounded-lg"
-                                                        style="display: flex; align-items: center; gap: 10px">
-                                                        <i class="bi bi-x-lg"></i>
-                                                        <span>Reprove</span>
-                                                    </button>
-                                                </form> --}}
                                             </div>
 
                                         </td>
@@ -79,3 +69,4 @@
             </div>
         </div>
     </div>
+@endsection
